@@ -1,0 +1,17 @@
+<% if @expected_signature == @actual_signature %>
+<div class="success">
+  <h1>Yay!</h1>
+  <h3>Your expected signature matched your passed signature!</h3>
+  <pre><code><%= @expected_signature %> = <%= @actual_signature %></code></pre>
+</div>
+<% else %>
+<div class="failure">
+  <h1>Drat!</h1>
+  <h3>Your expected signature did not match your passed signature!</h3>
+  <pre><code><%= @expected_signature %> != <%= @actual_signature %></code></pre>
+</div>
+<% end %>
+
+<p>
+  <a href="/">Start Over</a>
+</p>

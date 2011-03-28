@@ -1,0 +1,55 @@
+<% unless params[:signature].nil? %>
+<div class="signature_result">
+  <h3>Inputs:</h3>
+<pre><code>api_id = <%= h params[:api_id]%>
+timestamp = <%= h params[:timestamp]%>
+nonce = <%= h params[:nonce]%>
+data = <%= h params[:data]%></code></pre>
+
+  <h3>API Secret:</h3>
+  <pre><code><%= h params[:api_secret] %></code></pre>
+  
+  <h3>Signature:</h3>
+  <pre><code><%= h params[:signature] %></code></pre>
+</div>
+<% end %>
+
+<h1>Compute a new signature</h1>
+<form action="/compute" method="post">
+  <p>
+    <label>API ID (Required)</label><br/>
+    <input type="text" name="api_id" value="<%= params[:api_id] %>" size="100"/>
+  </p>
+  <p>
+    <label>Timestamp (Optional)</label><br/>
+    <input type="text" name="timestamp" value="<%= params[:timestamp] %>" size="100"/>
+  </p>
+  <p>
+    <label>Nonce (Optional)</label><br/>
+    <input type="text" name="nonce" value="<%= params[:nonce] %>" size="100"/>
+  </p>
+  <p>
+    <label>Data (Optional)</label><br/>
+    <input type="text" name="data" value="<%= params[:data] %>" size="100"/>
+  </p>
+  <p>
+    <label>API Secret Key</label><br/>
+    <span style="font-size:small">Don't put your production secret here - this is not a secure connection.  Use this is a tool to help you test.</span><br/>
+    <input type="text" name="api_secret" value="<%= params[:api_secret] %>" size="100"/>
+  </p>
+  <p>
+    <input type="submit" value="Compute Signature" />
+    or
+    <a href="/">reset</a>
+  </p>
+</form>
+
+<% unless params[:signature].nil? %>
+<% form = h erb(:form, :layout => false, :locals => {:endpoint => "https://api.chargify.com/api/v2/signups"}) %>
+<h1>Your form</h1>
+<pre><code><%= form %></code></pre>
+
+<h2>Try It!</h2>
+<p>(This doesn't actually do anything, it just verifies the signature)</p>
+<%= erb(:form, :layout => false, :locals => {:endpoint => "/verify?api_secret=#{params[:api_secret]}"}) %>
+<% end %>

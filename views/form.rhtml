@@ -1,0 +1,9 @@
+<form action="<%= endpoint %>" method="post">
+  <input type="hidden" name="secure[api_id]" value="<%= h params[:api_id] %>"/>
+  <input type="hidden" name="secure[timestamp]" value="<%= h params[:timestamp] %>"/>
+  <input type="hidden" name="secure[nonce]" value="<%= h params[:nonce] %>"/>
+  <input type="hidden" name="secure[data]" value="<%= h params[:data] %>"/>
+  <input type="hidden" name="secure[signature]" value="<%= h params[:signature] %>"/>
+  <input type="submit" value="Submit"/>
+</form>
+  
