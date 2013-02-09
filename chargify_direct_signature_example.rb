@@ -1,6 +1,6 @@
-require 'sinatra'
-require 'openssl'
-require 'addressable/uri'
+require 'rubygems'
+require 'bundler'
+Bundler.require
 
 HMAC_SHA1_DIGEST = OpenSSL::Digest::Digest.new('sha1')
 
