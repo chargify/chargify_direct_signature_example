@@ -1,2 +1,2 @@
-require 'chargify_direct_signature_example'
+require './chargify_direct_signature_example'
 run Sinatra::Application
