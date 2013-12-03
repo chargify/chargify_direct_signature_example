@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'openssl'
 require 'addressable/uri'
+require 'pp'
 
 HMAC_SHA1_DIGEST = OpenSSL::Digest::Digest.new('sha1')
 

@@ -13,7 +13,7 @@ data = <%= h params[:data]%></code></pre>
   <pre><code><%= h params[:signature] %></code></pre>
   
   <h3>Parsed Secure Data</h3>
-  <pre><code><%= h Rack::Utils.parse_nested_query(params[:data]).to_yaml %></code></pre>
+  <pre><code><%= h pp(Rack::Utils.parse_nested_query(params[:data])) %></code></pre>
 </div>
 <% end %>
 
